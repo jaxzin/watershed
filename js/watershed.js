@@ -1,7 +1,8 @@
 function updateWatershed() {
     var watershedDate = watershed($('#birthdate').val(), $('#meetdate').val());
     var watershedDiv = $('#watershed');
-    watershedDiv.html("<h1>"+watershedDate.format("fullDate")+"</h1>");
+    watershedDiv.html("<h2 class='watershed-date'>"+watershedDate.format("fullDate")+"</h2><h2 id='clock'></h2>");
+    watershedDiv.find("#clock").countdown({until: watershedDate});
 }
 
 function parseDate(str) {
