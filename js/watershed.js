@@ -1,8 +1,17 @@
 function updateWatershed() {
     var watershedDate = watershed($('#birthdate').val(), $('#meetdate').val());
     var watershedDiv = $('#watershed');
+    watershedDiv.find("#clock").countdown('destroy');
     watershedDiv.html("<h2 class='watershed-date'>"+watershedDate.format("fullDate")+"</h2><h2 id='clock'></h2>");
-    watershedDiv.find("#clock").countdown({until: watershedDate});
+    watershedDiv.find("#clock").countdown({until: watershedDate, format: 'YODHMS', onExpiry: updateWatershedSince, alwaysExpire: true});
+}
+
+function updateWatershedSince() {
+  var watershedDate = watershed($('#birthdate').val(), $('#meetdate').val());
+  var watershedDiv = $('#watershed');
+  watershedDiv.find("#clock").countdown('destroy');
+  watershedDiv.html("<h2 class='watershed-date'>"+watershedDate.format("fullDate")+"</h2><h2 id='clock'></h2>");
+  watershedDiv.find("#clock").countdown({since: watershedDate, format: 'YODHMS'});
 }
 
 function parseDate(str) {
