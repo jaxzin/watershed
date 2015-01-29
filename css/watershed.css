@@ -1,3 +1,15 @@
 #watershed {
-    height: 100px;
+  height: 100px;
+  padding-top: 10px;
+}
+
+#watershed .watershed-date {
+  font-weight: bold;
+  font-size: 100%;
+  color: #555;
+}
+
+#watershed .countdown-period {
+  font-size: 80%;
+  color: #555;
 }

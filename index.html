@@ -14,7 +14,7 @@
 
     <!-- Le styles -->
     <link href="css/bootstrap.css" rel="stylesheet">
-    <link href="css/bootstrap-datepicker.css" rel="stylesheet">
+    <link href="js/eternicode-bootstrap-datepicker/datepicker.css" rel="stylesheet">
     <style>
         body {
             padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
@@ -60,11 +60,17 @@
     <form class="well form-inline">
         <fieldset>
             <label for="birthdate">My birthday is</label>
-            <input id="birthdate" name="birthdate" data-datepicker="datepicker" class="small" type="text"
-                   value="04/20/1978"/>
+            <div id="birthdate-group" class="input-append date" data-provide="datepicker">
+              <input id="birthdate" name="birthdate" class="small span2" type="text"
+                     value="04/20/1978"/>
+              <span class="add-on"><i class="icon-th"></i></span>
+            </div>
             <label for="meetdate">and the day we met is</label>
-            <input id="meetdate" name="meetdate" data-datepicker="datepicker" class="small" type="text"
-                   value="03/26/1996"/>
+            <div id="meetdate-group" class="input-append date" data-provide="datepicker">
+              <input id="meetdate" name="meetdate" class="small span2" type="text"
+                  value="03/26/1996"/>
+              <span class="add-on"><i class="icon-th"></i></span>
+            </div>
             <a class="btn btn-primary" onclick="updateWatershed()">Find</a>
         </fieldset>
     </form>
@@ -78,44 +84,8 @@
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="js/jquery.js"></script>
-<script src="js/bootstrap-transition.js"></script>
-<script src="js/bootstrap-alert.js"></script>
-<script src="js/bootstrap-modal.js"></script>
-<script src="js/bootstrap-dropdown.js"></script>
-<script src="js/bootstrap-scrollspy.js"></script>
-<script src="js/bootstrap-tab.js"></script>
-<script src="js/bootstrap-tooltip.js"></script>
-<script src="js/bootstrap-popover.js"></script>
-<script src="js/bootstrap-button.js"></script>
-<script src="js/bootstrap-collapse.js"></script>
-<script src="js/bootstrap-carousel.js"></script>
-<script src="js/bootstrap-typeahead.js"></script>
-<script src="js/bootstrap-datepicker.js"></script>
-<script>
-    /* Update datepicker plugin so that MM/DD/YYYY format is used. */
-    $.extend($.fn.datepicker.defaults, {
-        parse:function (string) {
-            var matches;
-            if ((matches = string.match(/^(\d{2,2})\/(\d{2,2})\/(\d{4,4})$/))) {
-                return new Date(matches[3], matches[1] - 1, matches[2]);
-            } else {
-                return null;
-            }
-        },
-        format:function (date) {
-            var
-                    month = (date.getMonth() + 1).toString(),
-                    dom = date.getDate().toString();
-            if (month.length === 1) {
-                month = "0" + month;
-            }
-            if (dom.length === 1) {
-                dom = "0" + dom;
-            }
-            return month + "/" + dom + "/" + date.getFullYear();
-        }
-    });
-</script>
+<script src="js/bootstrap.js"></script>
+<script src="js/eternicode-bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
 <script src="js/dateFormat.js"></script>
 <script src="js/watershed.js"></script>
 <script type="text/javascript" src="jquery.countdown/jquery.plugin.js"></script>
